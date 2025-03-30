@@ -10,8 +10,10 @@ def makeORBDD(relevantYears,menuItems):
     for year in relevantYears:
         menuOptions.append({item:year for item in menuItems})
     return dcc.Dropdown(
-        id=ids.ORB_DD,
+        id=ids.SEASONS_DD,
         options=menuOptions,
         value=menuOptions[0]['value'], #sets the initial dropdown menu option to the first year in the relevantYears selections
         multi=False
     )
+
+

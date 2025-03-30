@@ -31,3 +31,9 @@ def calcAvgYearlyStat(targetDF, years, columnName):
 def linearRegCalc(xValue,yValue):
     slope,y_int = np.polyfit(xValue,yValue,1)
     return (slope,y_int)
+
+def assignRegSlopeValue(df,xColumn,yColumn,container):
+    input(f"This is container - {container}")
+    linearRegStats=linearRegCalc(df[xColumn],df[yColumn])
+    input(container.append(linearRegStats[0]))
+    return container.append(linearRegStats[0])

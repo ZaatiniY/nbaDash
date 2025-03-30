@@ -14,6 +14,10 @@ def create_layout(app: Dash):
                 children=[
                     graph.rendorORBDD(app)
                 ]),
-            graph.rendorORBSeasonGraph(app)
+            graph.rendorORBSeasonGraph(app),
+            html.Hr(),
+            graph.rendorCombinedDRBTrends(app),
+            html.Hr(),
+            graph.rendorDRBSeasonGraph(app)
         ]
     )
