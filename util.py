@@ -12,7 +12,6 @@ def uniqueYears(seasonYearsColumns):
         if year not in found:
             found.add(year)
             keep.append(year)
-
     return keep
 
 
@@ -32,5 +31,3 @@ def calcAvgYearlyStat(targetDF, years, columnName):
 def linearRegCalc(xValue,yValue):
     slope,y_int = np.polyfit(xValue,yValue,1)
     return (slope,y_int)
-
-

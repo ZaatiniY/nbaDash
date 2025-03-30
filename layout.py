@@ -7,6 +7,13 @@ def create_layout(app: Dash):
         children=[
             html.H1(app.title),
             html.Hr(),
-            graph.rendorCombinedORBTrends(app)
+            graph.rendorCombinedORBTrends(app),
+            html.Hr(),
+            html.H4('Trying a Dropdown'),
+            html.Div(className='dropdown-container',
+                children=[
+                    graph.rendorORBDD(app)
+                ]),
+            graph.rendorORBSeasonGraph(app)
         ]
     )
