@@ -40,7 +40,6 @@ def makeORBGraph(app):
         )
 
     return dcc.Graph(figure=fig,id=ids.YEARLY_ORB,style={'display':'inline-block'})
-    #return dcc.Graph(figure={'data':data,'layout':},id=ids.YEARLY_ORB,style={'display':'inline-block'})
 
 #changing so that you need to input which DF you want to use 
 #deleted the relevantID variable; will still be keeping the DF variable
@@ -211,8 +210,6 @@ def rendorCombinedDRBTrends(app):
     ])
 
 
-
-
 def rendorDRBSeasonGraph(app):
     @app.callback(
         Output(ids.SEASONS_DRB_GRAPH,"figure"),
@@ -228,18 +225,45 @@ def rendorDRBSeasonGraph(app):
         return fig
     return html.Div(dcc.Graph(id=ids.SEASONS_DRB_GRAPH))
 
-
-#this function is so ugly lol
-def makeRBCorrelations(app):
-    advDF=gitAdvData()
+#EDIT - consider splitting up functionality here to make more readible 
+def makeRBCorrelations(advDF):
     relevantYears = util.uniqueYears(advDF['Season Year'])
-    print(relevantYears)
-    DRBSlopes=[]
-    ORBSlopes=[]
-    for year in relevantYears:
-        currDF = advDF.copy()
-        print(currDF)
-        currDF=currDF.loc[advDF['Season Year']==year]
-        DRBSlopes=util.assignRegSlopeValue(currDF,'DRtg','DRB%',ORBSlopes)
-        ORBSlopes=util.assignRegSlopeValue(currDF,'ORtg','ORB%',ORBSlopes)
+    DRBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'DRtg','DRB%',container=[])
+    ORBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'ORtg','ORB%',container=[])
+    figORB=go.Figure()
+    figDRB=go.Figure()
+    figORB=makeRBRegPlot(ORBSlopes,relevantYears,figORB)
+    figDRB=makeRBRegPlot(DRBSlopes,relevantYears,figDRB)
+    return[figORB,figDRB]
+
+def makeRBRegPlot(rbRegStats,seasonYears,fig):
+    fig.add_trace(
+        go.Scatter(
+            x=seasonYears,
+            y=rbRegStats,
+            mode='markers'
+        )
+    )
+    return fig
+
+def rendorRBRegressionPlots(app):
+    reboundRegressionFigs=makeRBCorrelations(advDF=gitAdvData()) #please note - index 0 represents offensive rebounds; index 1 reprsents defensive rebounds
+    reboundRegressionFigs[0].update_layout(
+        title={'text':'Offensive Rebound Percentage Value to ORtg'},
+        yaxis={'title':'ORtg increase per ORB % [PP 100/%]'},
+        xaxis={'title':'Season Year'},
+    )
+    reboundRegressionFigs[1].update_layout(
+        title={'text':'Defensive Rebound Percentage Value to DRtg'},
+        yaxis={'title':'DRtg increase per ORB % [PP 100/%]'},
+        xaxis={'title':'Season Year'},
+    )
+    return html.Div(
+        children=[
+            dcc.Graph(figure=reboundRegressionFigs[0],id=ids.ORB_REGRESSION_STATS_GRAPH,style={'display':'inline-block'}),
+            dcc.Graph(figure=reboundRegressionFigs[1],id=ids.DRB_REGRESSION_STATS_GRAPH,style={'display':'inline-block'})
+        ]
+    )
+
+    
     
