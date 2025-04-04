@@ -16,4 +16,10 @@ def makeORBDD(relevantYears,menuItems):
         multi=False
     )
 
-
+def makeReboundRadioSelect():
+    menuOptions=['Pts per Rebound %','Correlation']
+    return dcc.RadioItems(
+        id=ids.HISTORAM_SELECTION,
+        options=menuOptions,
+        value='box',inline=True
+    )

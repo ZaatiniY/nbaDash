@@ -10,23 +10,11 @@ import util
 
 # relevantYears=['01','02','03']
 # test=makeORBSelection(relevantYears,menuItems=['label','value'])
-# print(test)
+# # print(test)
+# import numpy as np 
+# x=np.array([1,3,5,7,9])
+# y=np.array([2,4,4,8,10])
 
-def makeRBCorrelations():
-    advDF=graph.gitAdvData()
-    relevantYears = util.uniqueYears(advDF['Season Year'])
-    input(relevantYears)
-    DRBSlopes=[]
-    ORBSlopes=[]
-    for year in relevantYears:
-        print(year)
-        currDF = advDF.copy()
-        currDF=currDF.loc[advDF['Season Year']==year]
-        input(DRBSlopes)
-        input(ORBSlopes)
-        DRBSlopes=util.assignRegSlopeValue(currDF,'DRtg','DRB%',DRBSlopes)
-        ORBSlopes=util.assignRegSlopeValue(currDF,'ORtg','ORB%',ORBSlopes)
-        print(DRBSlopes)
-        print(ORBSlopes)
+# correlation_matrix=np.corrcoef(x,y)
 
-makeRBCorrelations()
+# print(correlation_matrix)

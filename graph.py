@@ -1,5 +1,6 @@
 from plotly import graph_objects as go 
 from dash import Dash, dcc, html
+import plotly.figure_factory as ff 
 from dash.dependencies import Input,Output
 import pandas as pd
 import ids
@@ -265,5 +266,14 @@ def rendorRBRegressionPlots(app):
         ]
     )
 
-    
-    
+def getCorrelationFigs(advDF):
+    finalFigs=[]
+    histLabels=['Offensive Rebounds','Defensive Rebounds']
+    relevantYears = util.uniqueYears(advDF['Season Year'])
+    ORBCorrelations=util.getCorrelationValues(advDF,relevantYears,'ORtg','ORB%')
+    DRBCorrelations=util.getCorrelationValues(advDF,relevantYears,'DRtg','DRB%')
+    correlations = [ORBCorrelations,DRBCorrelations]
+    for index in range():
+        fig=ff.create_distplot(correlations[index],histLabels[0],bin_size=0.5)
+        finalFigs.append(fig)
+    return finalFigs

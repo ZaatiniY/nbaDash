@@ -10,3 +10,4 @@ DRB_REGRESSION_STATS_GRAPH='historic-drb-impact-on-drtg'
 
 REGRESSION_TRACES=[SEASONS_ORB_GRAPH,SEASONS_DRB_GRAPH] #REGRESSION_TRACES will be used to track which of our graphs need to have trendlines included
 
+HISTOGRAM_SELECTION='histogram-data-type-selection'
