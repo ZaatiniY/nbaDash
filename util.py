@@ -39,7 +39,7 @@ def assignRegSlopeValue(df,Years,xColumn,yColumn,container):
         container.append(round(linearRegStats[0],1))
     return container
 
-def getCorrelationValue(DF,Years,XColName,YColName):
+def getCorrelationValues(DF,Years,XColName,YColName):
     corrValues=[]
     for year in Years:
         coefMatrix=np.corrcoef(DF[XColName],DF[YColName])

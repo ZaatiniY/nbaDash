@@ -233,11 +233,11 @@ def makeRBCorrelations(advDF):
     ORBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'ORtg','ORB%',container=[])
     figORB=go.Figure()
     figDRB=go.Figure()
-    figORB=makeRBRegPlot(ORBSlopes,relevantYears,figORB)
-    figDRB=makeRBRegPlot(DRBSlopes,relevantYears,figDRB)
+    figORB=drawRBRegPlot(ORBSlopes,relevantYears,figORB)
+    figDRB=drawRBRegPlot(DRBSlopes,relevantYears,figDRB)
     return[figORB,figDRB]
 
-def makeRBRegPlot(rbRegStats,seasonYears,fig):
+def drawRBRegPlot(rbRegStats,seasonYears,fig):
     fig.add_trace(
         go.Scatter(
             x=seasonYears,
@@ -266,14 +266,41 @@ def rendorRBRegressionPlots(app):
         ]
     )
 
-def getCorrelationFigs(advDF):
-    finalFigs=[]
-    histLabels=['Offensive Rebounds','Defensive Rebounds']
+def getCorrelationHist(advDF):
+    histFigs=[]
+    histLabels=['Offensive Rebound %','Defensive Rebound %']
     relevantYears = util.uniqueYears(advDF['Season Year'])
     ORBCorrelations=util.getCorrelationValues(advDF,relevantYears,'ORtg','ORB%')
     DRBCorrelations=util.getCorrelationValues(advDF,relevantYears,'DRtg','DRB%')
     correlations = [ORBCorrelations,DRBCorrelations]
     for index in range():
         fig=ff.create_distplot(correlations[index],histLabels[0],bin_size=0.5)
-        finalFigs.append(fig)
-    return finalFigs
+        histFigs.append(fig)
+    return histFigs
+
+def getRegressionHist(advDF):
+    histFigs=[]
+    histLabels=['Offensive Rebounds','Defensive Rebounds']
+    relevantYears = util.uniqueYears(advDF['Season Year'])
+    DRBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'DRtg','DRB%',container=[])
+    ORBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'ORtg','ORB%',container=[])
+    for count,slopeValue in enumerate([ORBSlopes,DRBSlopes]):
+        tempFig=ff.create_distplot(slopeValue,histLabels[count],bin_size=0.5)
+        histFigs.append(tempFig)   
+    return histFigs
+
+def rendorHistograms(app):
+    @app.callback(
+        [
+            Output(ids.ORB_HISTOGRAM,'figure'),
+            Output(ids.DRB_HISTOGRAM,'figure')
+        ],
+        [
+            Input(ids.HISTOGRAM_SELECTION,'value')
+        ]
+    )
+    def updateHistograms(selection):
+        
+
+
+
