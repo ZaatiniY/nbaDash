@@ -319,6 +319,13 @@ def rendorHistograms(app):
     return html.Div(children=[dcc.Graph(id=ids.ORB_HISTOGRAM),dcc.Graph(id=ids.DRB_HISTOGRAM)])
 
 
+def rendorYearSlider(app):
+    df=gitAdvData()
+    relevantYears=util.uniqueYears(df['Season Year'])
+    sliderObject=elements.makeSlider(relevantYears)
+    return html.Div(
+        [elements.makeSlider(relevantYears)]
+    )
 
 
 

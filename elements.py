@@ -16,7 +16,7 @@ def makeORBDD(relevantYears,menuItems):
         multi=False
     )
 
-histOptions=['Pts per Rebound %','Correlation']
+histOptions=['Pts per Rebound %','Correlation'] #EDIT - this is being referenced in the graph file for attributing the callback Input 
 def makeReboundRadioSelect():
     menuOptions=['Pts per Rebound %','Correlation']
     return dcc.RadioItems(
@@ -24,3 +24,15 @@ def makeReboundRadioSelect():
         options=menuOptions,
         value='Pts per Rebound %',inline=True
     )
+
+def makeSlider(relevantYears):
+    yearMarkers={year:str(year) for year in relevantYears}
+    relevantYears[5]
+    print(yearMarkers)
+    return dcc.Slider(
+        step=None,
+        marks=yearMarkers,
+        value=relevantYears[0],
+        id=ids.YEAR_SLIDER
+    )
+    

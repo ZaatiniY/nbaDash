@@ -22,7 +22,8 @@ def create_layout(app: Dash):
             html.Hr(),
             graph.rendorRBRegressionPlots(app),
             html.Hr(),
-            graph.rendorHistRI(app),
-            graph.rendorHistograms(app)
+            # graph.rendorHistRI(app),
+            # graph.rendorHistograms(app),
+            graph.rendorYearSlider(app)
         ]
     )

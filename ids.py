@@ -14,3 +14,6 @@ HISTOGRAM_SELECTION='histogram-radio-type-selection'
 
 ORB_HISTOGRAM='orb-selected-histogram-type'
 DRB_HISTOGRAM='drb-selected-histogram-type'
+
+YEAR_SLIDER='year-selection-slider'
+
