@@ -20,6 +20,9 @@ def create_layout(app: Dash):
             html.Hr(),
             graph.rendorDRBSeasonGraph(app),
             html.Hr(),
-            graph.rendorRBRegressionPlots(app)
+            graph.rendorRBRegressionPlots(app),
+            html.Hr(),
+            graph.rendorHistRI(app),
+            graph.rendorHistograms(app)
         ]
     )

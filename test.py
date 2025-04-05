@@ -18,3 +18,15 @@ import util
 # correlation_matrix=np.corrcoef(x,y)
 
 # print(correlation_matrix)
+from getData import gitAdvData
+import numpy as np
+import util
+
+
+advDF=gitAdvData()
+years=util.uniqueYears(advDF['Season Year'])
+correlationsORB=util.getCorrelationValues(advDF,years,'ORtg','ORB%')
+correlationsDRB=util.getCorrelationValues(advDF,years,'DRtg','DRB%')
+print(correlationsORB)
+print(correlationsDRB)
+

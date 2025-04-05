@@ -247,6 +247,8 @@ def drawRBRegPlot(rbRegStats,seasonYears,fig):
     )
     return fig
 
+
+#DELETE - these scatterplots will be deleted; currently being used to experiment with graph placement by moving the location
 def rendorRBRegressionPlots(app):
     reboundRegressionFigs=makeRBCorrelations(advDF=gitAdvData()) #please note - index 0 represents offensive rebounds; index 1 reprsents defensive rebounds
     reboundRegressionFigs[0].update_layout(
@@ -273,8 +275,10 @@ def getCorrelationHist(advDF):
     ORBCorrelations=util.getCorrelationValues(advDF,relevantYears,'ORtg','ORB%')
     DRBCorrelations=util.getCorrelationValues(advDF,relevantYears,'DRtg','DRB%')
     correlations = [ORBCorrelations,DRBCorrelations]
-    for index in range():
-        fig=ff.create_distplot(correlations[index],histLabels[0],bin_size=0.5)
+    for count,correlation in enumerate(correlations): #use the enumerate function instead here to make neater
+        data=[correlation]
+        print(data)
+        fig=ff.create_distplot(data,[histLabels[count]],bin_size=0.02)
         histFigs.append(fig)
     return histFigs
 
@@ -285,9 +289,15 @@ def getRegressionHist(advDF):
     DRBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'DRtg','DRB%',container=[])
     ORBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'ORtg','ORB%',container=[])
     for count,slopeValue in enumerate([ORBSlopes,DRBSlopes]):
-        tempFig=ff.create_distplot(slopeValue,histLabels[count],bin_size=0.5)
+        data=[slopeValue]
+        tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.02)
         histFigs.append(tempFig)   
     return histFigs
+
+def rendorHistRI(app):
+    return html.Div(
+        elements.makeReboundRadioSelect()
+    )
 
 def rendorHistograms(app):
     @app.callback(
@@ -299,8 +309,16 @@ def rendorHistograms(app):
             Input(ids.HISTOGRAM_SELECTION,'value')
         ]
     )
-    def updateHistograms(selection):
-        
+    def updateHistograms(menuSelection):
+        if menuSelection==elements.histOptions[0]:
+            selectedHists=getRegressionHist(advDF=gitAdvData())
+
+        if menuSelection==elements.histOptions[1]:
+            selectedHists=getCorrelationHist(advDF=gitAdvData())
+        return selectedHists[0],selectedHists[1] #EDIT - probably can just return a list or a tuple of sorts, instead of specifying the index of each figure in the list
+    return html.Div(children=[dcc.Graph(id=ids.ORB_HISTOGRAM),dcc.Graph(id=ids.DRB_HISTOGRAM)])
+
+
 
 
 
