@@ -5,6 +5,7 @@ from dash.dependencies import Input,Output
 import pandas as pd
 import ids
 from getData import gitAdvData
+import styles
 import util
 import ids
 import elements
@@ -31,16 +32,20 @@ def makeORBGraph(app):
         #     xaxis={'title':'Regular Season Year'},
         #     yaxis={'title':'Average ORB %','showgrid':True, 'griddash':'solid','gridcolor':'black'}
         #     )
+    #Removing the title and background color of the graph
     fig.update_layout(
-        title = {'text':'Playoff Team Offensive Ratings By Season'}, 
-        plot_bgcolor = "white",
+        # title = {'text':'Playoff Team Offensive Ratings By Season'}, 
+        # plot_bgcolor = "white",
         xaxis={'title':'Regular Season Year'},
         yaxis={'title':'Average ORB %','showgrid':True, 'griddash':'solid','gridcolor':'black'},
-        width=800,
-        height=800
+        width=500,
+        height=800,
+        # margin={
+        #     't':15,'b':15,'l':40,'r':15
+        # }
         )
 
-    return dcc.Graph(figure=fig,id=ids.YEARLY_ORB,style={'display':'inline-block'})
+    return dcc.Graph(figure=fig,id=ids.YEARLY_ORB)
 
 #changing so that you need to input which DF you want to use 
 #deleted the relevantID variable; will still be keeping the DF variable
@@ -60,11 +65,12 @@ def makeORBvOFtg(app,DF,id):
         )
     )
     fig.update_layout(
-        title = {'text':'ORtg vs ORB% - Regular Seasons'}, 
+        title = {'text':'ORtg vs ORB% - Regular Seasons','automargin':True}, 
         plot_bgcolor = "white",
         xaxis={'title':'ORB%'},
         yaxis={'title':'ORtg'},
-        width=800,height=800
+        width=480,
+        showlegend=False
         )
     if id in ids.REGRESSION_TRACES:
         fig.add_trace(makeRegressionScatter(copiedDF['ORB%'],copiedDF['ORtg']))
@@ -85,15 +91,17 @@ def makeORBvOFtg(app,DF,id):
 
     return fig
 
-# def rendorCombinedORBTrends(app):
-#     return html.Div(children=[
-#         makeORBGraph(app),makeORBvOFtg(app,DF=gitAdvData(),relevantID=ids.ORB_ORtg)
-#     ])
 
 def rendorCombinedORBTrends(app):
     return html.Div(children=[
-        makeORBGraph(app),dcc.Graph(figure=makeORBvOFtg(app,DF=gitAdvData(),id=ids.ORB_ORtg),id=ids.ORB_ORtg,style={'display':'inline-block'})
-    ])
+        makeORBGraph(app)
+    ],
+    style=styles.RB_OVER_TIME)
+
+# def rendorCombinedORBTrends(app):
+#     return html.Div(children=[
+#         makeORBGraph(app),dcc.Graph(figure=makeORBvOFtg(app,DF=gitAdvData(),id=ids.ORB_ORtg),id=ids.ORB_ORtg,style={'display':'inline-block'})
+#     ])
 
 
 
@@ -122,7 +130,7 @@ def rendorORBSeasonGraph(app):
         advDF=gitAdvData()
         selectDF=advDF.loc[advDF['Season Year']==season]
         fig=makeORBvOFtg(app,selectDF,id=ids.SEASONS_ORB_GRAPH)
-        fig.update_layout(width=1200)
+        # fig.update_layout(width=1200)
         return fig
     return html.Div(dcc.Graph(id=ids.SEASONS_ORB_GRAPH))
 
@@ -160,9 +168,9 @@ def makeDRBGraph(app):
         title = {'text':'Playoff Team Offensive Ratings By Season'}, 
         plot_bgcolor = "white",
         xaxis={'title':'Regular Season Year'},
-        yaxis={'title':'Average DRB %','showgrid':True, 'griddash':'solid','gridcolor':'black'},
-        width=800,
-        height=800
+        yaxis={'title':'Average DRB %','showgrid':True, 'griddash':'solid','gridcolor':'black'}
+        # width=800,
+        # height=800
         )
 
     return dcc.Graph(figure=fig,id=ids.YEARLY_DRB,style={'display':'inline-block'})
@@ -186,11 +194,15 @@ def makeDRBvDFtg(app,DF,id):
         )
     )
     fig.update_layout(
-        title = {'text':'ORtg vs ORB% - Regular Seasons'}, 
+        title = {'text':'ORtg vs ORB% - Regular Seasons','automargin':False}, 
         plot_bgcolor = "white",
         xaxis={'title':'ORB%'},
         yaxis={'title':'ORtg'},
-        width=800,height=800
+        width=480,
+        margin={'t':20,'l':0,'r':0,'b':0},
+        showlegend=False
+         #
+        # width=800,height=800
         )
     if id==ids.SEASONS_ORB_GRAPH:
         fig.add_trace(makeRegressionScatter(copiedDF['ORB%'],copiedDF['ORtg']))
@@ -216,16 +228,38 @@ def rendorDRBSeasonGraph(app):
         Output(ids.SEASONS_DRB_GRAPH,"figure"),
         [Input(ids.SEASONS_DD,'value')]
     )
-    def updateORBSeasonPlot(season):
+    def updateDRBSeasonPlot(season):
         # print('In update ORBSeason Plot:') #DELETE
         # print(f"Your selected season - {season}")
         advDF=gitAdvData()
         selectDF=advDF.loc[advDF['Season Year']==season]
         fig=makeDRBvDFtg(app,selectDF,id=ids.SEASONS_DRB_GRAPH)
-        fig.update_layout(width=1200)
+        # fig.update_layout(width=1200)
         return fig
     return html.Div(dcc.Graph(id=ids.SEASONS_DRB_GRAPH))
 
+
+#rendorRBvsRtgTrends will change the display of the ORB/DRB vs ORtg/DRtg depending on the slider selection on the app display
+def rendorRBvRtgTrends(app):
+    @app.callback(
+       [
+            Output(ids.SEASONS_ORB_GRAPH,'figure'),
+            Output(ids.SEASONS_DRB_GRAPH,'figure')
+       ],
+        Input(ids.YEAR_SLIDER,'value')
+    )
+    def updateRBSeasonPlots(season):
+        advDF=gitAdvData()
+        selectDFORB=advDF.loc[advDF['Season Year']==season]
+        selectDFDRB=advDF.loc[advDF['Season Year']==season]
+        figORB=makeORBvOFtg(app,selectDFORB,id=ids.SEASONS_ORB_GRAPH)
+        figDRB=makeDRBvDFtg(app,selectDFDRB,id=ids.SEASONS_DRB_GRAPH)
+        return figORB,figDRB
+    #This commented out return initially was applying inline-block styling to each of the paired graphs; instead, going to try inline-flex on the parent div
+    #return html.Div(children=[dcc.Graph(id=ids.SEASONS_ORB_GRAPH,style={'display':'inline-block'}),dcc.Graph(id=ids.SEASONS_DRB_GRAPH,style={'display':'inline-block'})])
+    return html.Div(children=[dcc.Graph(id=ids.SEASONS_ORB_GRAPH,style={'display':'inline-block'}),dcc.Graph(id=ids.SEASONS_DRB_GRAPH,style={'display':'inline-block'})],style=styles.DUAL_RB_GRAPHS)
+
+#-----------------------------------------------------------
 #EDIT - consider splitting up functionality here to make more readible 
 def makeRBCorrelations(advDF):
     relevantYears = util.uniqueYears(advDF['Season Year'])
@@ -296,7 +330,8 @@ def getRegressionHist(advDF):
 
 def rendorHistRI(app):
     return html.Div(
-        elements.makeReboundRadioSelect()
+        [elements.makeReboundRadioSelect()],
+        style=styles.RI_HIST_BUTTONS
     )
 
 def rendorHistograms(app):
@@ -324,7 +359,8 @@ def rendorYearSlider(app):
     relevantYears=util.uniqueYears(df['Season Year'])
     sliderObject=elements.makeSlider(relevantYears)
     return html.Div(
-        [elements.makeSlider(relevantYears)]
+        [elements.makeSlider(relevantYears)],
+        style=styles.TIMELINE
     )
 
 
