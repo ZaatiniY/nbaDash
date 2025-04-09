@@ -38,14 +38,16 @@ RI_HIST_BUTTONS={
 TIMELINE={
     'background':'gray',
     'height':50,
-    'display':'block'
+    'display':'block',
+    'margin-top':200
 }
 
 DUAL_RB_GRAPHS={
-    'display':'block',
     'height':700,
-    'margin':15,
-    'background':'pink'
+    'margin-left':15,
+    'margin-right':15,
+    'background':'pink',
+    'display':'block' #maybe try block flex next, and remove the styling from the individual graphs???
 }
 
 

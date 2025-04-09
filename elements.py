@@ -28,7 +28,6 @@ def makeReboundRadioSelect():
 def makeSlider(relevantYears):
     yearMarkers={year:year for year in relevantYears}
     relevantYears[5]
-    print(yearMarkers)
     return dcc.Slider(
         step=None,
         marks=yearMarkers,

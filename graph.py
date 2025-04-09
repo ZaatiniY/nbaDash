@@ -70,6 +70,7 @@ def makeORBvOFtg(app,DF,id):
         xaxis={'title':'ORB%'},
         yaxis={'title':'ORtg'},
         width=480,
+        margin={'t':30,'l':0,'r':0,'b':0},
         showlegend=False
         )
     if id in ids.REGRESSION_TRACES:
@@ -199,10 +200,8 @@ def makeDRBvDFtg(app,DF,id):
         xaxis={'title':'ORB%'},
         yaxis={'title':'ORtg'},
         width=480,
-        margin={'t':20,'l':0,'r':0,'b':0},
+        margin={'t':30,'l':0,'r':0,'b':0},
         showlegend=False
-         #
-        # width=800,height=800
         )
     if id==ids.SEASONS_ORB_GRAPH:
         fig.add_trace(makeRegressionScatter(copiedDF['ORB%'],copiedDF['ORtg']))
@@ -311,7 +310,6 @@ def getCorrelationHist(advDF):
     correlations = [ORBCorrelations,DRBCorrelations]
     for count,correlation in enumerate(correlations): #use the enumerate function instead here to make neater
         data=[correlation]
-        print(data)
         fig=ff.create_distplot(data,[histLabels[count]],bin_size=0.02)
         histFigs.append(fig)
     return histFigs
