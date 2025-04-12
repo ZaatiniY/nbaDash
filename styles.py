@@ -6,7 +6,6 @@ LEFT_MAIN_DIV={
     'margin-bottom':35,
     'height':1000,
     'background':'green',
-    'display':'block'
 }
 
 RIGHT_MAIN_DIV={
@@ -15,7 +14,6 @@ RIGHT_MAIN_DIV={
     'margin-top':35,
     'margin-bottom':35,
     'background':'purple',
-    'display':'block'
 }
 
 TOP_HALF_DIV={
