@@ -44,6 +44,6 @@ def getCorrelationValues(DF,Years,XColName,YColName):
     for year in Years:
         currSeasonDF=DF.loc[DF['Season Year']==year]
         coefMatrix=np.corrcoef(currSeasonDF[XColName],currSeasonDF[YColName])
-        coefValue=round(coefMatrix[0,1],1)
+        coefValue=round(coefMatrix[0,1],2)
         corrValues.append(coefValue)
     return corrValues

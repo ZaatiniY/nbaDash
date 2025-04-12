@@ -311,8 +311,15 @@ def getCorrelationHist(advDF):
     correlations = [ORBCorrelations,DRBCorrelations]
     for count,correlation in enumerate(correlations): #use the enumerate function instead here to make neater
         data=[correlation]
-        fig=ff.create_distplot(data,[histLabels[count]],bin_size=0.02)
-        histFigs.append(fig)
+        tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025)
+        maxHistValue=max(data[0])
+        minHistValue=min(data[0])
+        xHighRange=1.1*maxHistValue
+        xLowRange=1.1*minHistValue
+        # tempFig.update_layout(
+        #     xaxis={'range':[xLowRange,xHighRange]}
+        # )
+        histFigs.append(tempFig)
     return histFigs
 
 def getRegressionHist(advDF):
@@ -324,7 +331,15 @@ def getRegressionHist(advDF):
     for count,slopeValue in enumerate([ORBSlopes,DRBSlopes]):
         data=[slopeValue]
         tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025)
-        histFigs.append(tempFig)   
+        maxHistValue=max(data[0])
+        minHistValue=min(data[0])
+        xHighRange=1.1*maxHistValue
+        xLowRange=1.1*minHistValue
+        # tempFig.update_layout(
+        #     xaxis={'range':[xLowRange,xHighRange]}
+        # )
+        histFigs.append(tempFig)
+
     return histFigs
 
 def rendorHistRI(app):
@@ -351,12 +366,11 @@ def rendorHistograms(app):
         for fig in selectedHists:
             fig.update_layout(
                 width=1500,
-                height=300,
+                height=200,
                 showlegend=False,
                 margin={
-                    't':0
+                    't':0,'b':0
                 },
-                xaxis={}
             )
             pass
         return selectedHists[0],selectedHists[1] #EDIT - probably can just return a list or a tuple of sorts, instead of specifying the index of each figure in the list
