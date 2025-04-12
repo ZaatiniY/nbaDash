@@ -56,31 +56,63 @@ def create_layout(app: Dash):
 #     className='dashboard-container'
 #     )
 
+#04/12 YBZ - adding copying layout function as backup - adding new lower division to the mapping
+# def create_layoutV2(app):
+#     return html.Div([
+#         html.Div([
+#             html.Div(
+#                 [html.H1('NBA Rebound Analysis')],
+#                 style=styles.DASH_TITLE
+#             ),
+#             graph.rendorCombinedORBTrends(app),
+#             graph.rendorHistRI(app)
+#         ],
+#             style=styles.LEFT_MAIN_DIV
+#         ),
+#         html.Div([
+#             graph.rendorYearSlider(app),
+#             graph.rendorRBvRtgTrends(app),
+#             html.Div(),
+#             html.Div()
+#         ],
+#             style=styles.RIGHT_MAIN_DIV
+#         )
+#     ],
+#     style=styles.TOP_HALF_DIV
+#     )
 
 
 def create_layoutV2(app):
     return html.Div([
-        html.Div([
-            html.Div(
-                [html.H1('NBA Rebound Analysis')],
-                style=styles.DASH_TITLE
+        html.Div([#This is start of the top division styling
+            html.Div([ #This is start of the top left division styling
+                html.Div(
+                    [html.H1('NBA Rebound Analysis')],
+                    style=styles.DASH_TITLE
+                ),
+                graph.rendorCombinedORBTrends(app),
+                graph.rendorHistRI(app)
+            ],
+                style=styles.LEFT_MAIN_DIV
             ),
-            graph.rendorCombinedORBTrends(app),
-            graph.rendorHistRI(app)
+            html.Div([
+                graph.rendorYearSlider(app),
+                graph.rendorRBvRtgTrends(app),
+                html.Div(),
+                html.Div()
+            ],
+                style=styles.RIGHT_MAIN_DIV
+            )
         ],
-            style=styles.LEFT_MAIN_DIV
+        style=styles.TOP_HALF_DIV
         ),
         html.Div([
-            graph.rendorYearSlider(app),
-            graph.rendorRBvRtgTrends(app),
-            html.Div(),
-            html.Div()
         ],
-            style=styles.RIGHT_MAIN_DIV
+        style=styles.BOTTOM_HALF_DIV
         )
     ],
     style={
-        'display':'inline-flex',
-        'background':'blue'
-        }
+        'background':'brown',
+        'display':'grid'
+    }
     )

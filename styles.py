@@ -5,8 +5,8 @@ LEFT_MAIN_DIV={
     'margin-top':35,
     'margin-bottom':35,
     'height':1000,
-    'display':'grid',
-    'background':'green'
+    'background':'green',
+    'display':'block'
 }
 
 RIGHT_MAIN_DIV={
@@ -15,7 +15,17 @@ RIGHT_MAIN_DIV={
     'margin-top':35,
     'margin-bottom':35,
     'background':'purple',
-    'display':'grid'
+    'display':'block'
+}
+
+TOP_HALF_DIV={
+    'display':'inline-flex',
+    'background':'blue'
+}
+
+BOTTOM_HALF_DIV={
+    'background':'black',
+    'height':1000
 }
 
 DASH_TITLE={
@@ -31,15 +41,14 @@ RB_OVER_TIME={
 }
 
 RI_HIST_BUTTONS={
-    'margin-right':15,
-    'horizontal-alignment':'right'
+    'margin-left':100,
+    'margin-top':20
 }
 
 TIMELINE={
     'background':'gray',
     'height':50,
-    'display':'block',
-    'margin-top':200
+    'margin-top':15
 }
 
 DUAL_RB_GRAPHS={
@@ -47,7 +56,8 @@ DUAL_RB_GRAPHS={
     'margin-left':15,
     'margin-right':15,
     'background':'pink',
-    'display':'block' #maybe try block flex next, and remove the styling from the individual graphs???
+
+ #maybe try block flex next, and remove the styling from the individual graphs???
 }
 
 
