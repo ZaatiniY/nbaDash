@@ -30,57 +30,6 @@ def create_layout(app: Dash):
         ]
     )
 
-# def create_layoutV2(app):
-#     return dbc.Container([
-#         html.Div([
-#             html.Div(
-#                 [html.H1('NBA Rebound Analysis')],
-#                 style=styles.DASH_TITLE
-#             ),
-#             graph.rendorCombinedORBTrends(app),
-#             graph.rendorHistRI(app)
-#         ],
-#             style=styles.LEFT_MAIN_DIV
-#         ),
-#         html.Div([
-#             graph.rendorYearSlider(app),
-#             html.Div(),
-#             html.Div(),
-#             html.Div()
-#         ],
-#             style=styles.RIGHT_MAIN_DIV
-#         )
-#     ],
-#     fluid=False,
-#     style={'display':'flex'}, #flex didn't work here, but neither did inline-block
-#     className='dashboard-container'
-#     )
-
-#04/12 YBZ - adding copying layout function as backup - adding new lower division to the mapping
-# def create_layoutV2(app):
-#     return html.Div([
-#         html.Div([
-#             html.Div(
-#                 [html.H1('NBA Rebound Analysis')],
-#                 style=styles.DASH_TITLE
-#             ),
-#             graph.rendorCombinedORBTrends(app),
-#             graph.rendorHistRI(app)
-#         ],
-#             style=styles.LEFT_MAIN_DIV
-#         ),
-#         html.Div([
-#             graph.rendorYearSlider(app),
-#             graph.rendorRBvRtgTrends(app),
-#             html.Div(),
-#             html.Div()
-#         ],
-#             style=styles.RIGHT_MAIN_DIV
-#         )
-#     ],
-#     style=styles.TOP_HALF_DIV
-#     )
-
 
 def create_layoutV2(app):
     return html.Div([
@@ -90,8 +39,7 @@ def create_layoutV2(app):
                     [html.H1('NBA Rebound Analysis')],
                     style=styles.DASH_TITLE
                 ),
-                graph.rendorCombinedORBTrends(app),
-                graph.rendorHistRI(app)
+                graph.rendorCombinedORBTrends(app)
             ],
                 style=styles.LEFT_MAIN_DIV
             ),
@@ -107,6 +55,8 @@ def create_layoutV2(app):
         style=styles.TOP_HALF_DIV
         ),
         html.Div([
+            graph.rendorHistRI(app),
+            graph.rendorHistograms(app)
         ],
         style=styles.BOTTOM_HALF_DIV
         )

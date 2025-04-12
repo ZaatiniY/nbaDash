@@ -23,7 +23,12 @@ TOP_HALF_DIV={
 
 BOTTOM_HALF_DIV={
     'background':'black',
-    'height':1000
+    'margin-right':35,
+    'margin-left':35,
+    'margin-bottom':35,
+    'height':500,
+    'display':'inline-flex'
+
 }
 
 DASH_TITLE={
@@ -40,13 +45,14 @@ RB_OVER_TIME={
 
 RI_HIST_BUTTONS={
     'margin-left':100,
-    'margin-top':20
+    'margin-top':20,
+    'background':'red'
 }
 
 TIMELINE={
     'background':'gray',
     'height':50,
-    'margin-top':15
+    'margin-top':15,
 }
 
 DUAL_RB_GRAPHS={
@@ -55,7 +61,11 @@ DUAL_RB_GRAPHS={
     'margin-right':15,
     'background':'pink',
 
- #maybe try block flex next, and remove the styling from the individual graphs???
+}
+
+HISTOGRAMS={
+    'background':'orange',
+    'display':'block'
 }
 
 

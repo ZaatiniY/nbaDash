@@ -36,7 +36,7 @@ def assignRegSlopeValue(df,Years,xColumn,yColumn,container):
         currDF = df.copy()
         seasonDF=currDF.loc[currDF['Season Year']==year]
         linearRegStats=linearRegCalc(seasonDF[xColumn],seasonDF[yColumn])
-        container.append(round(linearRegStats[0],1))
+        container.append(round(linearRegStats[0],2))
     return container
 
 def getCorrelationValues(DF,Years,XColName,YColName):

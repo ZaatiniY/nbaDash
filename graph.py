@@ -1,6 +1,7 @@
 from plotly import graph_objects as go 
 from dash import Dash, dcc, html
 import plotly.figure_factory as ff 
+import plotly.express as px
 from dash.dependencies import Input,Output
 import pandas as pd
 import ids
@@ -322,7 +323,7 @@ def getRegressionHist(advDF):
     ORBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'ORtg','ORB%',container=[])
     for count,slopeValue in enumerate([ORBSlopes,DRBSlopes]):
         data=[slopeValue]
-        tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.02)
+        tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025)
         histFigs.append(tempFig)   
     return histFigs
 
@@ -345,11 +346,21 @@ def rendorHistograms(app):
     def updateHistograms(menuSelection):
         if menuSelection==elements.histOptions[0]:
             selectedHists=getRegressionHist(advDF=gitAdvData())
-
         if menuSelection==elements.histOptions[1]:
             selectedHists=getCorrelationHist(advDF=gitAdvData())
+        for fig in selectedHists:
+            fig.update_layout(
+                width=1500,
+                height=300,
+                showlegend=False,
+                margin={
+                    't':0
+                },
+                xaxis={}
+            )
+            pass
         return selectedHists[0],selectedHists[1] #EDIT - probably can just return a list or a tuple of sorts, instead of specifying the index of each figure in the list
-    return html.Div(children=[dcc.Graph(id=ids.ORB_HISTOGRAM),dcc.Graph(id=ids.DRB_HISTOGRAM)])
+    return html.Div(children=[dcc.Graph(id=ids.ORB_HISTOGRAM),dcc.Graph(id=ids.DRB_HISTOGRAM)],style=styles.HISTOGRAMS)
 
 
 def rendorYearSlider(app):
