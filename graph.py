@@ -304,7 +304,7 @@ def rendorRBRegressionPlots(app):
 
 def getCorrelationHist(advDF):
     histFigs=[]
-    histLabels=['Offensive Rebound %','Defensive Rebound %']
+    histLabels=['ORB% v. OFRtg - Correlations','DRB% v. DFRtg - Correlations']
     relevantYears = util.uniqueYears(advDF['Season Year'])
     ORBCorrelations=util.getCorrelationValues(advDF,relevantYears,'ORtg','ORB%')
     DRBCorrelations=util.getCorrelationValues(advDF,relevantYears,'DRtg','DRB%')
@@ -315,16 +315,17 @@ def getCorrelationHist(advDF):
         maxHistValue=max(data[0])
         minHistValue=min(data[0])
         xHighRange=1.1*maxHistValue
-        xLowRange=1.1*minHistValue
-        # tempFig.update_layout(
-        #     xaxis={'range':[xLowRange,xHighRange]}
-        # )
+        xLowRange=0.9*minHistValue
+        tempFig.update_layout(
+            title={'text':histLabels[count]},
+            xaxis={'range':[xLowRange,xHighRange]}
+        )
         histFigs.append(tempFig)
     return histFigs
 
 def getRegressionHist(advDF):
     histFigs=[]
-    histLabels=['Offensive Rebounds','Defensive Rebounds']
+    histLabels=['ORB% v. OFRtg - Regression Slopes','DRB% v. DFRtg - Regression Slopes']
     relevantYears = util.uniqueYears(advDF['Season Year'])
     DRBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'DRtg','DRB%',container=[])
     ORBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'ORtg','ORB%',container=[])
@@ -334,10 +335,11 @@ def getRegressionHist(advDF):
         maxHistValue=max(data[0])
         minHistValue=min(data[0])
         xHighRange=1.1*maxHistValue
-        xLowRange=1.1*minHistValue
-        # tempFig.update_layout(
-        #     xaxis={'range':[xLowRange,xHighRange]}
-        # )
+        xLowRange=0.9*minHistValue
+        tempFig.update_layout(
+            title={'text':histLabels[count]},
+            xaxis={'range':[xLowRange,xHighRange]}
+        )
         histFigs.append(tempFig)
 
     return histFigs
@@ -369,7 +371,7 @@ def rendorHistograms(app):
                 height=200,
                 showlegend=False,
                 margin={
-                    't':0,'b':0
+                    't':30,'b':0
                 },
             )
             pass
