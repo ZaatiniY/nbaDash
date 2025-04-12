@@ -40,7 +40,7 @@ def makeORBGraph(app):
         xaxis={'title':'Regular Season Year'},
         yaxis={'title':'Average ORB %','showgrid':True, 'griddash':'solid','gridcolor':'black'},
         width=500,
-        height=800,
+        height=600
         # margin={
         #     't':15,'b':15,'l':40,'r':15
         # }
@@ -70,7 +70,7 @@ def makeORBvOFtg(app,DF,id):
         plot_bgcolor = "white",
         xaxis={'title':'ORB%'},
         yaxis={'title':'ORtg'},
-        width=480,
+        width=700,
         margin={'t':30,'l':0,'r':0,'b':0},
         showlegend=False
         )
@@ -200,7 +200,7 @@ def makeDRBvDFtg(app,DF,id):
         plot_bgcolor = "white",
         xaxis={'title':'ORB%'},
         yaxis={'title':'ORtg'},
-        width=480,
+        width=700,
         margin={'t':30,'l':0,'r':0,'b':0},
         showlegend=False
         )

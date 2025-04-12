@@ -13,7 +13,8 @@ def makeORBDD(relevantYears,menuItems):
         id=ids.SEASONS_DD,
         options=menuOptions,
         value=menuOptions[0]['value'], #sets the initial dropdown menu option to the first year in the relevantYears selections
-        multi=False
+        multi=False,
+        className='years-slider'
     )
 
 histOptions=['Pts per Rebound %','Correlation'] #EDIT - this is being referenced in the graph file for attributing the callback Input 

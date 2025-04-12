@@ -4,14 +4,13 @@ LEFT_MAIN_DIV={
     'margin-left':35,
     'margin-top':35,
     'margin-bottom':35,
-    'height':1000,
     'background':'green',
 }
 
 RIGHT_MAIN_DIV={
-    'width':990,
+    'width':1500,
     'margin-right':35,
-    'margin-top':35,
+    'margin-top':70,
     'margin-bottom':35,
     'background':'purple',
 }
@@ -39,27 +38,30 @@ DASH_TITLE={
 
 RB_OVER_TIME={
     'width':500,
-    'height':800,
+    'height':600,
     'background':'yellow'
 }
 
 RI_HIST_BUTTONS={
     'margin-left':100,
-    'margin-top':20,
+    'margin-top':70,
     'background':'red'
 }
 
 TIMELINE={
     'background':'gray',
-    'height':50,
-    'margin-top':15,
+    'height':30,
+    'margin-top':70,
+    'font-size':50
 }
 
 DUAL_RB_GRAPHS={
-    'height':700,
+    'height':600,
     'margin-left':15,
     'margin-right':15,
+    'margin-top':10,
     'background':'pink',
+    'display':'inline-block'
 
 }
 
