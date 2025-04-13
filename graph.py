@@ -38,8 +38,11 @@ def makeORBGraph(app):
     fig.update_layout(
         # title = {'text':'Playoff Team Offensive Ratings By Season'}, 
         # plot_bgcolor = "white",
-        xaxis={'title':'Regular Season Year'},
-        yaxis={'title':'Average ORB %','showgrid':True, 'griddash':'solid','gridcolor':'black'},
+        # xaxis={'title':'Regular Season Year'},
+        title=graphFonts.ORB_TIME_MAINTITLE,
+        xaxis=graphFonts.ORB_TIME_XAXIS,
+        yaxis=graphFonts.ORB_TIME_YAXIS,
+        margin={'t':10},
         width=500,
         height=550
         # margin={
