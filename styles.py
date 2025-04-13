@@ -3,7 +3,7 @@ LEFT_MAIN_DIV={
     'width':500,
     'margin-left':35,
     'margin-top':35,
-    'margin-bottom':35,
+    'margin-bottom':10,
     'background':'green',
 }
 
@@ -11,7 +11,7 @@ RIGHT_MAIN_DIV={
     'width':1500,
     'margin-right':35,
     'margin-top':70,
-    'margin-bottom':35,
+    'margin-bottom':10,
     'background':'purple',
 }
 
@@ -37,9 +37,10 @@ DASH_TITLE={
     }
 
 RB_OVER_TIME={
-    'width':500,
-    'height':600,
-    'background':'yellow'
+    'width':650,
+    'height':500,
+    'background':'yellow',
+    'margin-bottom':0
 }
 
 RI_HIST_BUTTONS={
@@ -49,14 +50,13 @@ RI_HIST_BUTTONS={
 }
 
 TIMELINE={
-    'background':'gray',
-    'height':30,
-    'margin-top':70,
+    # 'background':'gray', commented out to  test changing font size/color using CSS
+    'height':50,
+    'margin-top':50,
     'font-size':50
 }
 
 DUAL_RB_GRAPHS={
-    'height':600,
     'margin-left':15,
     'margin-right':15,
     'margin-top':10,
@@ -67,7 +67,14 @@ DUAL_RB_GRAPHS={
 
 HISTOGRAMS={
     'background':'orange',
-    'display':'block'
+    'display':'block',
+    'margin-left':250
 }
+
+
+
+
+
+
 
 

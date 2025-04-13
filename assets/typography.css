@@ -1,0 +1,12 @@
+h1 {
+    color: hotpink;
+}
+/* 
+.yearsSlider > .rc-slider-track {
+    font-size:200px;
+    color: hotpink;
+} */
+
+.yearsSlider .rc-slider-track {
+    background-color:hotpink;
+}

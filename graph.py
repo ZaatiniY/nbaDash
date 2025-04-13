@@ -11,6 +11,7 @@ import util
 import ids
 import elements
 import dash_bootstrap_templates as dbt
+import graphFonts
 dbt.load_figure_template(['lux'])
 
 def makeORBGraph(app):
@@ -40,7 +41,7 @@ def makeORBGraph(app):
         xaxis={'title':'Regular Season Year'},
         yaxis={'title':'Average ORB %','showgrid':True, 'griddash':'solid','gridcolor':'black'},
         width=500,
-        height=600
+        height=550
         # margin={
         #     't':15,'b':15,'l':40,'r':15
         # }
@@ -314,8 +315,10 @@ def getCorrelationHist(advDF):
         tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025)
         maxHistValue=max(data[0])
         minHistValue=min(data[0])
-        xHighRange=1.1*maxHistValue
-        xLowRange=0.9*minHistValue
+        xHighRange=1.1*maxHistValue#DELETE - no longer necessary once you get static axis range 
+        xLowRange=0.9*minHistValue#DELETE - no longer necessary once you get static axis range 
+        xHighRange=0.75
+        xLowRange=-0.75
         tempFig.update_layout(
             title={'text':histLabels[count]},
             xaxis={'range':[xLowRange,xHighRange]}
@@ -334,8 +337,10 @@ def getRegressionHist(advDF):
         tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025)
         maxHistValue=max(data[0])
         minHistValue=min(data[0])
-        xHighRange=1.1*maxHistValue
-        xLowRange=0.9*minHistValue
+        xHighRange=1.1*maxHistValue#DELETE - no longer necessary once you get static axis range 
+        xLowRange=0.9*minHistValue#DELETE - no longer necessary once you get static axis range 
+        xHighRange=0.75
+        xLowRange=-0.75
         tempFig.update_layout(
             title={'text':histLabels[count]},
             xaxis={'range':[xLowRange,xHighRange]}
@@ -368,7 +373,7 @@ def rendorHistograms(app):
         for fig in selectedHists:
             fig.update_layout(
                 width=1500,
-                height=200,
+                height=300,
                 showlegend=False,
                 margin={
                     't':30,'b':0
@@ -382,7 +387,6 @@ def rendorHistograms(app):
 def rendorYearSlider(app):
     df=gitAdvData()
     relevantYears=util.uniqueYears(df['Season Year'])
-    sliderObject=elements.makeSlider(relevantYears)
     return html.Div(
         [elements.makeSlider(relevantYears)],
         style=styles.TIMELINE
