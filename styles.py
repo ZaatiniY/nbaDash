@@ -2,7 +2,7 @@
 LEFT_MAIN_DIV={
     'width':500,
     'margin-left':35,
-    'margin-top':35,
+    'margin-top':20,
     'margin-bottom':10,
     'background':'green',
 }
@@ -10,14 +10,18 @@ LEFT_MAIN_DIV={
 RIGHT_MAIN_DIV={
     'width':1500,
     'margin-right':35,
-    'margin-top':70,
+    'margin-top':20,
     'margin-bottom':10,
     'background':'purple',
+    'display':'grid',
+    # 'justify-content':'center'
+    'align-items':'center'
 }
 
 TOP_HALF_DIV={
     'display':'inline-flex',
-    'background':'blue'
+    'background':'blue',
+    'justify-content':'center'
 }
 
 BOTTOM_HALF_DIV={
@@ -25,15 +29,18 @@ BOTTOM_HALF_DIV={
     'margin-right':35,
     'margin-left':35,
     'margin-bottom':35,
-    'height':500,
-    'display':'inline-flex'
-
+    'height':700,
+    'display':'inline-flex',
+    'justify-content':'center'
 }
 
 DASH_TITLE={
     'font-family':"Poppins",
     'vertical-alignment':'top',
-    'background':'red'
+    'background':'red',
+    'align-item':'center',
+    'justify-content':'center',
+    'display':'flex'
     }
 
 RB_OVER_TIME={
@@ -45,21 +52,23 @@ RB_OVER_TIME={
 
 RI_HIST_BUTTONS={
     'margin-left':100,
-    'margin-top':70,
-    'background':'red'
+    'background':'red',
+    'display':'flex',
+    'align-items':'center',
+    'justify-content':'center'
 }
 
 TIMELINE={
     # 'background':'gray', commented out to  test changing font size/color using CSS
     'height':50,
-    'margin-top':50,
+    'margin-top':15,
     'font-size':50
 }
 
 DUAL_RB_GRAPHS={
     'margin-left':15,
-    'margin-right':15,
     'margin-top':10,
+    'margin-right':15,
     'background':'pink',
     'display':'inline-block'
 
@@ -68,7 +77,8 @@ DUAL_RB_GRAPHS={
 HISTOGRAMS={
     'background':'orange',
     'display':'block',
-    'margin-left':250
+    'margin-top':15,
+    'height':'orange'
 }
 
 

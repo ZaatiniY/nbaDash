@@ -27,9 +27,7 @@ ORB_TIME_YAXIS={
             'size':15
         }
     },
-    'showgrid':True,
     'griddash':'solid',
-    'gridcolor':'black',
     'showline':True,
     'mirror':True,
     'linecolor':'black'

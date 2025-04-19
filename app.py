@@ -1,11 +1,8 @@
 from dash import Dash, html, callback, Output, Input
-from layout import create_layout
 from getData import gitAdvData
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
 from layout import create_layoutV2
-
-
 
 def main():
     # load_figure_template('LUX')

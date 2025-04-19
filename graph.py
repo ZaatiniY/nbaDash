@@ -74,7 +74,7 @@ def makeORBvOFtg(app,DF,id):
         plot_bgcolor = "white",
         xaxis={'title':'ORB%'},
         yaxis={'title':'ORtg'},
-        width=700,
+        width=735,
         margin={'t':30,'l':0,'r':0,'b':0},
         showlegend=False
         )
@@ -204,7 +204,7 @@ def makeDRBvDFtg(app,DF,id):
         plot_bgcolor = "white",
         xaxis={'title':'ORB%'},
         yaxis={'title':'ORtg'},
-        width=700,
+        width=735,
         margin={'t':30,'l':0,'r':0,'b':0},
         showlegend=False
         )
@@ -259,8 +259,6 @@ def rendorRBvRtgTrends(app):
         figORB=makeORBvOFtg(app,selectDFORB,id=ids.SEASONS_ORB_GRAPH)
         figDRB=makeDRBvDFtg(app,selectDFDRB,id=ids.SEASONS_DRB_GRAPH)
         return figORB,figDRB
-    #This commented out return initially was applying inline-block styling to each of the paired graphs; instead, going to try inline-flex on the parent div
-    #return html.Div(children=[dcc.Graph(id=ids.SEASONS_ORB_GRAPH,style={'display':'inline-block'}),dcc.Graph(id=ids.SEASONS_DRB_GRAPH,style={'display':'inline-block'})])
     return html.Div(children=[dcc.Graph(id=ids.SEASONS_ORB_GRAPH,style={'display':'inline-block'}),dcc.Graph(id=ids.SEASONS_DRB_GRAPH,style={'display':'inline-block'})],style=styles.DUAL_RB_GRAPHS)
 
 #-----------------------------------------------------------
@@ -338,10 +336,6 @@ def getRegressionHist(advDF):
     for count,slopeValue in enumerate([ORBSlopes,DRBSlopes]):
         data=[slopeValue]
         tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025)
-        maxHistValue=max(data[0])
-        minHistValue=min(data[0])
-        xHighRange=1.1*maxHistValue#DELETE - no longer necessary once you get static axis range 
-        xLowRange=0.9*minHistValue#DELETE - no longer necessary once you get static axis range 
         xHighRange=0.75
         xLowRange=-0.75
         tempFig.update_layout(
