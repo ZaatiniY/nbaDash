@@ -10,3 +10,6 @@ h1 {
 .yearsSlider .rc-slider-track {
     background-color:hotpink;
 }
+.yearsSlider .rc-slider-mark-text {
+    color: hotpink
+}

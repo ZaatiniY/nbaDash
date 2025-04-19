@@ -313,7 +313,7 @@ def getCorrelationHist(advDF):
     correlations = [ORBCorrelations,DRBCorrelations]
     for count,correlation in enumerate(correlations): #use the enumerate function instead here to make neater
         data=[correlation]
-        tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025)
+        tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025,colors=['cadetblue'])
         maxHistValue=max(data[0])
         minHistValue=min(data[0])
         xHighRange=1.1*maxHistValue#DELETE - no longer necessary once you get static axis range 
@@ -324,6 +324,11 @@ def getCorrelationHist(advDF):
             title={'text':histLabels[count]},
             xaxis={'range':[xLowRange,xHighRange]}
         )
+        tempFig.update_layout(
+            title=graphFonts.CORR_HIST_TITLE,
+            xaxis=graphFonts.CORR_HIST_XAXIS,
+            yaxis=graphFonts.CORR_HIST_YAXIS
+        ) #This second layout update changes elements that aren't determined in body of the function
         histFigs.append(tempFig)
     return histFigs
 
@@ -335,13 +340,18 @@ def getRegressionHist(advDF):
     ORBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'ORtg','ORB%',container=[])
     for count,slopeValue in enumerate([ORBSlopes,DRBSlopes]):
         data=[slopeValue]
-        tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025)
+        tempFig=ff.create_distplot(data,[histLabels[count]],bin_size=0.025,colors=["cadetblue"])
         xHighRange=0.75
         xLowRange=-0.75
         tempFig.update_layout(
             title={'text':histLabels[count]},
             xaxis={'range':[xLowRange,xHighRange]}
         )
+        # tempFig.update_layout(
+        #     title=graphFonts.REG_HIST_TITLE,
+        #     xaxis=graphFonts.REG_HIST_XAXIS,
+        #     yaxis=graphFonts.REG_HIST_YAXIS
+        # ) #This second layout update changes elements that aren't determined in body of the function
         histFigs.append(tempFig)
 
     return histFigs
@@ -369,8 +379,8 @@ def rendorHistograms(app):
             selectedHists=getCorrelationHist(advDF=gitAdvData())
         for fig in selectedHists:
             fig.update_layout(
-                width=1500,
-                height=300,
+                width=1750,
+                height=325,
                 showlegend=False,
                 margin={
                     't':30,'b':0

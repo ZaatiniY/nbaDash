@@ -9,10 +9,11 @@ LEFT_MAIN_DIV={
 
 RIGHT_MAIN_DIV={
     'width':1500,
+    'height':600,
     'margin-right':35,
     'margin-top':20,
     'margin-bottom':10,
-    'background':'purple',
+    'background':'white',
     'display':'grid',
     # 'justify-content':'center'
     'align-items':'center'
@@ -21,7 +22,7 @@ RIGHT_MAIN_DIV={
 TOP_HALF_DIV={
     'display':'inline-flex',
     'background':'blue',
-    'justify-content':'center'
+    'justify-content':'center',
 }
 
 BOTTOM_HALF_DIV={
