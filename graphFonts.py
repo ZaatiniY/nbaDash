@@ -44,8 +44,11 @@ CORR_HIST_XAXIS={
         'text': 'Correlation - RB% vs Rtg',
         'font': {
 
-            'size':15
+            'size':20
         },
+    },
+    'tickfont':{
+        'size':17
     },
     'showline':True,
     'mirror':True,
@@ -57,8 +60,11 @@ CORR_HIST_YAXIS={
         'text': 'Count',
         'font': {
 
-            'size':15
+            'size':20
         },
+    },
+    'tickfont':{
+        'size':17
     },
     'showline':True,
     'mirror':True,
@@ -67,17 +73,19 @@ CORR_HIST_YAXIS={
 
 REG_HIST_TITLE={
     'font':{
-        'size':25
+        'size':20
     }
 }
 
 REG_HIST_XAXIS={
     'title': {
-        'text': 'Regression Slope - PP 100 Poss/RB%',
+        'text': 'Regression Slope - Points Perr 100 Poss/RB%',
         'font': {
-
-            'size':15
+            'size':20
         },
+    },
+    'tickfont':{
+        'size':17
     },
     'showline':True,
     'mirror':True,
@@ -89,8 +97,11 @@ REG_HIST_YAXIS={
         'text': 'Count',
         'font': {
 
-            'size':15
+            'size':20
         },
+    },
+    'tickfont':{
+        'size':17
     },
     'showline':True,
     'mirror':True,

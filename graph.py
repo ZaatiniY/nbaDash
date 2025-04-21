@@ -347,11 +347,11 @@ def getRegressionHist(advDF):
             title={'text':histLabels[count]},
             xaxis={'range':[xLowRange,xHighRange]}
         )
-        # tempFig.update_layout(
-        #     title=graphFonts.REG_HIST_TITLE,
-        #     xaxis=graphFonts.REG_HIST_XAXIS,
-        #     yaxis=graphFonts.REG_HIST_YAXIS
-        # ) #This second layout update changes elements that aren't determined in body of the function
+        tempFig.update_layout(
+            title=graphFonts.REG_HIST_TITLE,
+            xaxis=graphFonts.REG_HIST_XAXIS,
+            yaxis=graphFonts.REG_HIST_YAXIS
+        ) #This second layout update changes elements that aren't determined in body of the function
         histFigs.append(tempFig)
 
     return histFigs
@@ -380,10 +380,10 @@ def rendorHistograms(app):
         for fig in selectedHists:
             fig.update_layout(
                 width=1750,
-                height=325,
+                height=400,
                 showlegend=False,
                 margin={
-                    't':30,'b':0
+                    't':45,'b':0
                 },
             )
             pass

@@ -30,7 +30,6 @@ BOTTOM_HALF_DIV={
     'margin-right':35,
     'margin-left':35,
     'margin-bottom':35,
-    'height':700,
     'display':'inline-flex',
     'justify-content':'center'
 }

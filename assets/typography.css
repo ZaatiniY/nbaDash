@@ -11,5 +11,6 @@ h1 {
     background-color:hotpink;
 }
 .yearsSlider .rc-slider-mark-text {
-    color: hotpink
+    color: hotpink;
+    font-size: 20px
 }
