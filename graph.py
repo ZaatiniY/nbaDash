@@ -258,6 +258,16 @@ def rendorRBvRtgTrends(app):
         selectDFDRB=advDF.loc[advDF['Season Year']==season]
         figORB=makeORBvOFtg(app,selectDFORB,id=ids.SEASONS_ORB_GRAPH)
         figDRB=makeDRBvDFtg(app,selectDFDRB,id=ids.SEASONS_DRB_GRAPH)
+        figORB.update_layout(
+            title=graphFonts.ORB_V_RTG_TITLE,
+            xaxis=graphFonts.ORB_V_RTG_XAXIS,
+            yaxis=graphFonts.ORB_V_RTG_YAXIS
+        )
+        figDRB.update_layout(
+            title=graphFonts.DRB_V_RTG_TITLE,
+            xaxis=graphFonts.DRB_V_RTG_XAXIS,
+            yaxis=graphFonts.DRB_V_RTG_YAXIS
+        )
         return figORB,figDRB
     return html.Div(children=[dcc.Graph(id=ids.SEASONS_ORB_GRAPH,style={'display':'inline-block'}),dcc.Graph(id=ids.SEASONS_DRB_GRAPH,style={'display':'inline-block'})],style=styles.DUAL_RB_GRAPHS)
 

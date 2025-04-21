@@ -33,10 +33,74 @@ ORB_TIME_YAXIS={
     'linecolor':'black'
 }
 
+ORB_V_RTG_TITLE={
+    'font':{
+        'size':25
+    }
+}
+
+ORB_V_RTG_XAXIS={
+    'title': {
+        'text': 'Year - Regular Season',
+        'font': {
+            'color':'cadetblue',
+            'size':15
+        },
+    },
+    'showline':True,
+    'mirror':True,
+    'linecolor':'black'
+}
+
+ORB_V_RTG_YAXIS={
+    'title': {
+        'text': 'Year - Regular Season',
+        'font': {
+            'color':'cadetblue',
+            'size':15
+        },
+    },
+    'showline':True,
+    'mirror':True,
+    'linecolor':'black'
+}
+
 CORR_HIST_TITLE={
     'font':{
         'size':25
     }
+}
+
+DRB_V_RTG_TITLE={
+    'font':{
+        'size':25
+    }
+}
+
+DRB_V_RTG_XAXIS={
+    'title': {
+        'text': 'Year - Regular Season',
+        'font': {
+            'color':'cadetblue',
+            'size':15
+        },
+    },
+    'showline':True,
+    'mirror':True,
+    'linecolor':'black'
+}
+
+DRB_V_RTG_YAXIS={
+    'title': {
+        'text': 'Year - Regular Season',
+        'font': {
+            'color':'cadetblue',
+            'size':15
+        },
+    },
+    'showline':True,
+    'mirror':True,
+    'linecolor':'black'
 }
 
 CORR_HIST_XAXIS={
