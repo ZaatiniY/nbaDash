@@ -1,6 +1,4 @@
-h1 {
-    color: hotpink;
-}
+
 /* 
 .yearsSlider > .rc-slider-track {
     font-size:200px;
@@ -8,9 +6,13 @@ h1 {
 } */
 
 .yearsSlider .rc-slider-track {
-    background-color:hotpink;
+    background-color:cadetblue;
 }
 .yearsSlider .rc-slider-mark-text {
-    color: hotpink;
+    color: cadetblue;
     font-size: 20px
+}
+
+#radioitems label:nth-child(1) {
+    color:pink
 }

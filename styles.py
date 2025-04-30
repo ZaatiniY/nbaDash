@@ -3,17 +3,17 @@ LEFT_MAIN_DIV={
     'width':500,
     'margin-left':35,
     'margin-top':20,
-    'margin-bottom':10,
-    'background':'green',
+    'margin-bottom':10
+    # 'background':'green',
 }
 
 RIGHT_MAIN_DIV={
     'width':1500,
-    'height':600,
+    'height':620,
     'margin-right':35,
     'margin-top':20,
     'margin-bottom':10,
-    'background':'white',
+    # 'background':'white',
     'display':'grid',
     # 'justify-content':'center'
     'align-items':'center'
@@ -21,12 +21,12 @@ RIGHT_MAIN_DIV={
 
 TOP_HALF_DIV={
     'display':'inline-flex',
-    'background':'blue',
+    # 'background':'blue',
     'justify-content':'center',
 }
 
 BOTTOM_HALF_DIV={
-    'background':'black',
+    # 'background':'black',
     'margin-right':35,
     'margin-left':35,
     'margin-bottom':35,
@@ -37,7 +37,7 @@ BOTTOM_HALF_DIV={
 DASH_TITLE={
     'font-family':"Poppins",
     'vertical-alignment':'top',
-    'background':'red',
+    # 'background':'red',
     'align-item':'center',
     'justify-content':'center',
     'display':'flex'
@@ -46,13 +46,13 @@ DASH_TITLE={
 RB_OVER_TIME={
     'width':650,
     'height':500,
-    'background':'yellow',
+    # 'background':'yellow',
     'margin-bottom':0
 }
 
 RI_HIST_BUTTONS={
     'margin-left':100,
-    'background':'red',
+    # 'background':'red',
     'display':'flex',
     'align-items':'center',
     'justify-content':'center'
@@ -67,15 +67,14 @@ TIMELINE={
 
 DUAL_RB_GRAPHS={
     'margin-left':15,
-    'margin-top':10,
     'margin-right':15,
-    'background':'pink',
+    # 'background':'pink',
     'display':'inline-block'
 
 }
 
 HISTOGRAMS={
-    'background':'orange',
+    # 'background':'orange',
     'display':'block',
     'margin-top':15,
     'height':'orange'

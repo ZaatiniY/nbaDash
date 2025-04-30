@@ -22,7 +22,8 @@ def makeReboundRadioSelect():
     return dcc.RadioItems(
         id=ids.HISTOGRAM_SELECTION,
         options=menuOptions,
-        value='Pts per Rebound %',inline=False 
+        value='Pts per Rebound %',inline=False,
+        className='radSelect'
     )
 
 def makeSlider(relevantYears):

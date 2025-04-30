@@ -44,7 +44,7 @@ def makeORBGraph(app):
         yaxis=graphFonts.ORB_TIME_YAXIS,
         margin={'t':10},
         width=500,
-        height=550
+        height=600
         # margin={
         #     't':15,'b':15,'l':40,'r':15
         # }
@@ -75,7 +75,7 @@ def makeORBvOFtg(app,DF,id):
         xaxis={'title':'ORB%'},
         yaxis={'title':'ORtg'},
         width=735,
-        margin={'t':30,'l':0,'r':0,'b':0},
+        margin={'t':50,'l':10,'r':0,'b':0},
         showlegend=False
         )
     if id in ids.REGRESSION_TRACES:
@@ -103,11 +103,6 @@ def rendorCombinedORBTrends(app):
         makeORBGraph(app)
     ],
     style=styles.RB_OVER_TIME)
-
-# def rendorCombinedORBTrends(app):
-#     return html.Div(children=[
-#         makeORBGraph(app),dcc.Graph(figure=makeORBvOFtg(app,DF=gitAdvData(),id=ids.ORB_ORtg),id=ids.ORB_ORtg,style={'display':'inline-block'})
-#     ])
 
 
 
@@ -200,12 +195,12 @@ def makeDRBvDFtg(app,DF,id):
         )
     )
     fig.update_layout(
-        title = {'text':'ORtg vs ORB% - Regular Seasons','automargin':False}, 
+        title = {'text':'DRtg vs DRB% - Regular Seasons','automargin':False}, 
         plot_bgcolor = "white",
-        xaxis={'title':'ORB%'},
-        yaxis={'title':'ORtg'},
+        xaxis={'title':'DRB%'},
+        yaxis={'title':'DRtg'},
         width=735,
-        margin={'t':30,'l':0,'r':0,'b':0},
+        margin={'t':50,'l':10,'r':0,'b':0},
         showlegend=False
         )
     if id==ids.SEASONS_ORB_GRAPH:
@@ -216,16 +211,10 @@ def makeDRBvDFtg(app,DF,id):
     
     return fig
 
-# def rendorCombinedORBTrends(app):
-#     return html.Div(children=[
-#         makeORBGraph(app),makeORBvOFtg(app,DF=gitAdvData(),relevantID=ids.ORB_ORtg)
-#     ])
-
 def rendorCombinedDRBTrends(app):
     return html.Div(children=[
         makeDRBGraph(app),dcc.Graph(figure=makeDRBvDFtg(app,DF=gitAdvData(),id=ids.DRB_DRtg),id=ids.DRB_DRtg,style={'display':'inline-block'})
     ])
-
 
 def rendorDRBSeasonGraph(app):
     @app.callback(
@@ -241,7 +230,6 @@ def rendorDRBSeasonGraph(app):
         # fig.update_layout(width=1200)
         return fig
     return html.Div(dcc.Graph(id=ids.SEASONS_DRB_GRAPH))
-
 
 #rendorRBvsRtgTrends will change the display of the ORB/DRB vs ORtg/DRtg depending on the slider selection on the app display
 def rendorRBvRtgTrends(app):
@@ -271,8 +259,6 @@ def rendorRBvRtgTrends(app):
         return figORB,figDRB
     return html.Div(children=[dcc.Graph(id=ids.SEASONS_ORB_GRAPH,style={'display':'inline-block'}),dcc.Graph(id=ids.SEASONS_DRB_GRAPH,style={'display':'inline-block'})],style=styles.DUAL_RB_GRAPHS)
 
-#-----------------------------------------------------------
-#EDIT - consider splitting up functionality here to make more readible 
 def makeRBCorrelations(advDF):
     relevantYears = util.uniqueYears(advDF['Season Year'])
     DRBSlopes=util.assignRegSlopeValue(advDF,relevantYears,'DRtg','DRB%',container=[])
@@ -292,7 +278,6 @@ def drawRBRegPlot(rbRegStats,seasonYears,fig):
         )
     )
     return fig
-
 
 #DELETE - these scatterplots will be deleted; currently being used to experiment with graph placement by moving the location
 def rendorRBRegressionPlots(app):
