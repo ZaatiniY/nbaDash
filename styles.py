@@ -37,10 +37,9 @@ BOTTOM_HALF_DIV={
 DASH_TITLE={
     'font-family':"Poppins",
     'vertical-alignment':'top',
-    # 'background':'red',
     'align-item':'center',
     'justify-content':'center',
-    'display':'flex'
+    'display':'flex',
     }
 
 RB_OVER_TIME={

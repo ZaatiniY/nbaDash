@@ -34,7 +34,7 @@ def create_layoutV2(app):
         )
     ],
     style={
-        'background':'brown',
+        # 'background':'brown',
         'display':'grid'
     }
     )
